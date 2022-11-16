@@ -1,0 +1,52 @@
+import sys
+n, m = input().split()
+room_name = []
+vacant = []
+
+for i in range(int(n)):
+    name = input().split()
+    room_name.extend([name])
+
+for j in range(int(m)):
+    m_tmp, t_s, t_f = input().split()
+    for k in range(len(room_name)):
+        if room_name[k][0] == m_tmp:
+            room_name[k].append(t_s)
+            room_name[k].append(t_f)
+
+room_name.sort()
+count = 0
+
+for i in range(int(n)):
+    count = 0
+    vacant.clear()
+    vacant.append('Room %s:' %room_name[i][0])
+    tmp = list(map(int, room_name[i][1:]))
+    tmp.sort()
+    if len(tmp) == 0:
+        vacant.append('09-18')
+        count+=1
+    for k in range(0,len(tmp),2):
+        if k == 0:
+            if tmp[k] == 9 and len(tmp)==2 and tmp[k+1]!=18:
+                vacant.append('%d-18' %tmp[k+1])    
+                count+=1
+                break           
+            elif tmp[k] != 9:
+                vacant.append('09-%d' %tmp[k])
+                count +=1
+        if k != 0 and tmp[k-1] != tmp[k]:
+            vacant.append('%d-%d' %(tmp[k-1],tmp[k]))
+            count +=1
+        if k == len(tmp)-2 and tmp[k+1] != 18:
+            vacant.append('%d-18' %tmp[k+1])
+            count +=1
+    if count == 0 and len(tmp) != 0:
+        vacant.append('Not available')
+    if count > 0:
+        vacant.append('%d available:' %count)
+    print(vacant[0], vacant[-1], sep='\n')
+    for j in vacant[1:len(vacant)-1]:
+        print(j)
+    if i != int(n)-1:
+        print('-----')
