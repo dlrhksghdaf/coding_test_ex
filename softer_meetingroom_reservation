@@ -92,7 +92,7 @@ for i in range(int(n)):
         vacant.append('Not available')
     if count > 0:
         vacant.append('%d available:' %count)
-    print(vacant[0], vacant[-1], sep='\n')
+    print(vacant[0], vacant[-1], sep='\n')     #줄 바꾸려면 뒤에 sep='\n' 붙이기
     for j in vacant[1:len(vacant)-1]:
         print(j)
     if i != int(n)-1:
