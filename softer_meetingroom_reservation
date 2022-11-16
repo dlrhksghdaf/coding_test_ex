@@ -1,3 +1,50 @@
+###
+입력예제1
+3 7
+grandeur
+avante
+sonata
+sonata 14 16
+grandeur 11 12
+avante 15 18
+sonata 10 11
+avante 9 12
+grandeur 16 18
+avante 12 15
+출력예제1
+Room avante:
+Not available
+-----
+Room grandeur:
+2 available:
+09-11
+12-16
+-----
+Room sonata:
+3 available:
+09-10
+11-14
+16-18
+입력예제2
+3 2
+santafe
+aerocity
+porter
+santafe 9 12
+porter 9 18
+출력예제2
+Room aerocity:
+1 available:
+09-18
+-----
+Room porter:
+Not available
+-----
+Room santafe:
+1 available:
+12-18
+###
+
 import sys
 n, m = input().split()
 room_name = []
